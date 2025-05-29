@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organograma Empresarial</title>
+    <style>
+        /* Estilos gerais */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --hover-color: #e9ecef;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Barra de pesquisa */
+        .search-container {
+            margin: 0 auto 20px;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+            font-size: 18px;
+        }
+
+        /* Estilos do organograma */
+        .supervisor-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .supervisor-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            font-size: 1.5rem;
+        }
+
+        .colaboradores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .colaborador-card {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .colaborador-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .foto-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 3px solid var(--primary-color);
+            cursor: pointer;
+            transition: border-width 0.3s ease;
+        }
+
+        .foto-container:hover {
+            border-width: 4px;
+        }
+
+        .foto-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .colaborador-nome {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .colaborador-cargo {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .colaborador-telefone {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .colaborador-equipe {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            line-height: 1.2;
+            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* Modal para expandir fotos */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .close-button:hover {
+            color: black;
+        }
+
+        .modal-image-container {
+            border: 6px solid var(--primary-color);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        #modal-image {
+            max-width: 100%;
+            max-height: 50vh;
+            display: block;
+        }
+
+        .modal-info {
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+        }
+
+        .modal-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .modal-info p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .modal-info strong {
+            color: var(--primary-color);
+        }
+
+        /* Mensagem de nenhum resultado */
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            font-size: 1.2rem;
+            color: #777;
+            background-color: white;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .colaboradores-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .foto-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .colaborador-nome {
+                font-size: 0.9rem;
+            }
+            
+            .colaborador-cargo, .colaborador-telefone {
+                font-size: 0.8rem;
+            }
+
+            .modal-content {
+                padding: 20px;
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .colaboradores-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 10px;
+            }
+            
+            .foto-container {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .colaborador-card {
+                padding: 10px;
+            }
+
+            .modal-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Organograma Empresarial</h1>
+            <p class="subtitle">Clique nas fotos para expandir</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Pesquisar colaborador por nome...">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div id="no-results" class="no-results">
+            Nenhum colaborador encontrado com esse nome.
+        </div>
+
+        <main id="organograma">
+            <!-- O conteúdo será carregado via JavaScript -->
+        </main>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div class="modal-image-container">
+                    <img id="modal-image" src="" alt="Foto ampliada">
+                </div>
+                <div class="modal-info" id="modal-info">
+                    <!-- Informações adicionais serão inseridas aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos colaboradores
+        const colaboradores = [
+            // Os dados serão carregados do JSON
+        ];
+
+        // Carregar os dados dos colaboradores do JSON
+        fetch('colaboradores_completos.json')
+            .then(response => response.json())
+            .then(data => {
+                // Atualizar a lista de colaboradores
+                colaboradores.length = 0;
+                colaboradores.push(...data);
+                
+                // Renderizar o organograma
+                renderOrganograma(colaboradores);
+                
+                // Configurar a pesquisa
+                setupSearch();
+            })
+            .catch(error => {
+                console.error('Erro ao carregar os dados dos colaboradores:', error);
+            });
+
+        // Função para renderizar o organograma
+        function renderOrganograma(colaboradoresParaExibir) {
+            const organogramaContainer = document.getElementById('organograma');
+            organogramaContainer.innerHTML = ''; // Limpar o conteúdo anterior
+            
+            // Agrupar colaboradores por supervisor
+            const colaboradoresPorSupervisor = {};
+            
+            colaboradoresParaExibir.forEach(colaborador => {
+                if (!colaboradoresPorSupervisor[colaborador.supervisor]) {
+                    colaboradoresPorSupervisor[colaborador.supervisor] = [];
+                }
+                colaboradoresPorSupervisor[colaborador.supervisor].push(colaborador);
+            });
+            
+            // Verificar se há resultados
+            const noResultsElement = document.getElementById('no-results');
+            if (Object.keys(colaboradoresPorSupervisor).length === 0) {
+                noResultsElement.style.display = 'block';
+                return;
+            } else {
+                noResultsElement.style.display = 'none';
+            }
+            
+            // Renderizar cada seção de supervisor
+            Object.keys(colaboradoresPorSupervisor).forEach(supervisor => {
+                // Criar seção do supervisor
+                const supervisorSection = document.createElement('section');
+                supervisorSection.className = 'supervisor-section';
+                
+                // Adicionar cabeçalho do supervisor
+                const supervisorHeader = document.createElement('h2');
+                supervisorHeader.className = 'supervisor-header';
+                supervisorHeader.textContent = supervisor;
+                supervisorSection.appendChild(supervisorHeader);
+                
+                // Agrupar colaboradores por equipe
+                const colaboradoresPorEquipe = {};
+                colaboradoresPorSupervisor[supervisor].forEach(colaborador => {
+                    const equipe = colaborador.equipe || 'Sem Equipe';
+                    if (!colaboradoresPorEquipe[equipe]) {
+                        colaboradoresPorEquipe[equipe] = [];
+                    }
+                    colaboradoresPorEquipe[equipe].push(colaborador);
+                });
+                
+                // Criar grid de colaboradores
+                const colaboradoresGrid = document.createElement('div');
+                colaboradoresGrid.className = 'colaboradores-grid';
+                
+                // Ordenar as equipes
+                const equipes = Object.keys(colaboradoresPorEquipe).sort();
+                
+                // Adicionar cada equipe ao grid
+                equipes.forEach(equipe => {
+                    // Adicionar cada colaborador da equipe ao grid
+                    colaboradoresPorEquipe[equipe].forEach(colaborador => {
+                        const card = criarCardColaborador(colaborador);
+                        colaboradoresGrid.appendChild(card);
+                    });
+                });
+                
+                // Adicionar grid à seção do supervisor
+                supervisorSection.appendChild(colaboradoresGrid);
+                
+                // Adicionar seção do supervisor ao organograma
+                organogramaContainer.appendChild(supervisorSection);
+            });
+        }
+
+        // Função para criar o card de um colaborador
+        function criarCardColaborador(colaborador) {
+            const card = document.createElement('div');
+            card.className = 'colaborador-card';
+            
+            // Imagem com fallback para placeholder se a imagem não existir
+            const fotoContainer = document.createElement('div');
+            fotoContainer.className = 'foto-container';
+            
+            const img = document.createElement('img');
+            img.src = colaborador.imagem;
+            img.alt = `Foto de ${colaborador.nome}`;
+            img.onerror = function() {
+                this.src = 'placeholder.jpg';
+                this.onerror = null;
+            };
+            
+            // Adicionar evento de clique para expandir a foto
+            fotoContainer.appendChild(img);
+            fotoContainer.addEventListener('click', function() {
+                abrirModal(colaborador);
+            });
+            
+            // Informações do colaborador
+            const nome = document.createElement('div');
+            nome.className = 'colaborador-nome';
+            nome.textContent = colaborador.nome;
+            
+            const cargo = document.createElement('div');
+            cargo.className = 'colaborador-cargo';
+            cargo.textContent = colaborador.cargo;
+            
+            const telefone = document.createElement('div');
+            telefone.className = 'colaborador-telefone';
+            telefone.textContent = colaborador.telefone;
+            
+            const equipe = document.createElement('div');
+            equipe.className = 'colaborador-equipe';
+            equipe.textContent = colaborador.equipe || 'Sem Equipe';
+            
+            // Montar o card
+            card.appendChild(fotoContainer);
+            card.appendChild(nome);
+            card.appendChild(cargo);
+            card.appendChild(telefone);
+            card.appendChild(equipe);
+            
+            return card;
+        }
+
+        // Função para abrir o modal com informações detalhadas
+        function abrirModal(colaborador) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-image');
+            const modalInfo = document.getElementById('modal-info');
+            
+            // Definir a imagem
+            modalImg.src = colaborador.imagem;
+            
+            // Limpar e preencher as informações
+            modalInfo.innerHTML = `
+                <h3>${colaborador.nome}</h3>
+                <p><strong>Cargo:</strong> ${colaborador.cargo}</p>
+                <p><strong>Supervisor:</strong> ${colaborador.supervisor}</p>
+                <p><strong>Telefone:</strong> ${colaborador.telefone}</p>
+                <p><strong>Equipe:</strong> ${colaborador.equipe || 'Sem Equipe'}</p>
+                <p><strong>Endereço:</strong> ${colaborador.endereco || 'Não informado'}</p>
+                <p><strong>Bairro:</strong> ${colaborador.bairro || 'Não informado'}</p>
+                <p><strong>Cidade:</strong> ${colaborador.cidade || 'Não informada'}</p>
+                <p><strong>Grau de Ensino:</strong> ${colaborador.grau_ensino || 'Não informado'}</p>
+                <p><strong>Formação:</strong> ${colaborador.formacao || 'Não informada'}</p>
+            `;
+            
+            // Exibir o modal
+            modal.style.display = 'flex';
+        }
+
+        // Configurar a pesquisa
+        function setupSearch() {
+            const searchInput = document.getElementById('search-input');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                if (searchTerm === '') {
+                    // Se a pesquisa estiver vazia, mostrar todos os colaboradores
+                    renderOrganograma(colaboradores);
+                } else {
+                    // Filtrar colaboradores pelo nome
+                    const colaboradoresFiltrados = colaboradores.filter(colaborador => 
+                        colaborador.nome.toLowerCase().includes(searchTerm)
+                    );
+                    
+                    // Renderizar apenas os colaboradores filtrados
+                    renderOrganograma(colaboradoresFiltrados);
+                }
+            });
+        }
+
+        // Configurar o fechamento do modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('modal');
+            const closeButton = document.querySelector('.close-button');
+            
+            // Fechar o modal ao clicar no botão de fechar
+            closeButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Fechar o modal ao clicar fora da imagem
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
