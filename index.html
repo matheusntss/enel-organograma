@@ -337,28 +337,699 @@
     </div>
 
     <script>
-        // Dados dos colaboradores
+        // Dados dos colaboradores embutidos diretamente no HTML
+        // Todos os dados estão aqui, não é necessário carregar de um arquivo externo
         const colaboradores = [
-            // Os dados serão carregados do JSON
-        ];
-
-        // Carregar os dados dos colaboradores do JSON
-        fetch('colaboradores_completos.json')
-            .then(response => response.json())
-            .then(data => {
-                // Atualizar a lista de colaboradores
-                colaboradores.length = 0;
-                colaboradores.push(...data);
-                
-                // Renderizar o organograma
-                renderOrganograma(colaboradores);
-                
-                // Configurar a pesquisa
-                setupSearch();
-            })
-            .catch(error => {
-                console.error('Erro ao carregar os dados dos colaboradores:', error);
-            });
+  {
+    "nome": "IRISLANDO DIAS DO NASCIMENTO",
+    "cargo": "Eletricista Sênior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9154-2732",
+    "equipe": "EPF-IN-01B",
+    "endereco": "Av. Integração, 1505",
+    "bairro": "Cj Metropolitano",
+    "cidade": "Caucaia",
+    "grau_ensino": "Ensino Médio Completo,   Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/IRISLANDODIAS.JPEG"
+  },
+  {
+    "nome": "JOEL FERREIRA DOS SANTOS",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9158-7589",
+    "equipe": "EPF-IN-01B",
+    "endereco": "Rua Cabo Verde, 869, CS A",
+    "bairro": "Conjunto Palmeiras",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Médio Completo, Curso Técnico em Elétrico (Completo)",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/JOEL.JPEG"
+  },
+  {
+    "nome": "WEDLEY BORGES DE SOUSA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9166-6373",
+    "equipe": "EPF-IN-08B",
+    "endereco": "Rua Carlos Chagas, 1159",
+    "bairro": "Bom Sucesso",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Técnico em Eletrotécnica Completo, Cursando 3º Semestre de Engenharia Elétrica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/WEDLEYBORGES.JPEG"
+  },
+  {
+    "nome": "FRANCISCA EDILENE DE SOUZA GAMA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9134-6369",
+    "equipe": "EPF-IN-20B",
+    "endereco": "Rua Florêncio de Alencar, 149",
+    "bairro": "Barra do Ceará",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Superior Completo, Cursando Técnico em Eletrotécnica",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/FCAEDILENE.JPEG"
+  },
+  {
+    "nome": "RODRIGO MARCIO DO NASCIMENTO ARAUJO",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9152-5377",
+    "equipe": "EPF-IN-20B",
+    "endereco": "Travessa Tenente Jaime Andrade, 23, Altos",
+    "bairro": "Aerolândia",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Técnico em Eletrotécnica Completo",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/MARCIO.JPEG"
+  },
+  {
+    "nome": "ANTONIO EVERARDO HENRIQUE DA SILVA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9151-4389",
+    "equipe": "EPF-IN-21B",
+    "endereco": "Rua Tomaz Ildefonso, 569",
+    "bairro": "Messejana",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Tecnico em eletrotecnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/ANTONIOLUCIANO.JPEG"
+  },
+  {
+    "nome": "ELISREGE LINHARES GOUVEIA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9130-9718",
+    "equipe": "EPF-IN-21B",
+    "endereco": "Débora Vieira, 1864",
+    "bairro": "Conj. Metropolitano",
+    "cidade": "Caucaia - CE",
+    "grau_ensino": "Ensino Médio Completo, Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/ELISREGE.JPEG"
+  },
+  {
+    "nome": "ANACLETO PEREIRA NEVES NETO",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9154-8563",
+    "equipe": "EPF-IN-35B",
+    "endereco": "Rua Contorno Leste, 672",
+    "bairro": "Novo Mondubim",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Ensino Médio Completo",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/JANETEPEREIRA.JPEG"
+  },
+  {
+    "nome": "KACIO BARBOSA DA SILVA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9125-5929",
+    "equipe": "EPF-IN-35B",
+    "endereco": "Rua Padre Alfredo, Nesi 1951, Apt 201",
+    "bairro": "Parque Potira",
+    "cidade": "Caucaia",
+    "grau_ensino": "Ensino Médio Completo",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/KACIO-FLAVIO.JPEG"
+  },
+  {
+    "nome": "ALEXANDRE PINTO MIRANDA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9953-8028",
+    "equipe": "EPF-IN-37B",
+    "endereco": "Rua Carlos Gondim, 29, Altos",
+    "bairro": "Jardim Guanabara",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Ensino Médio Completo",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/default.JPEG"
+  },
+  {
+    "nome": "JEFFERSON ROCHA DE CARVALHO",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9158-1021",
+    "equipe": "EPF-IN-37B",
+    "endereco": "Rua José Eduardo de Sousa, Nº 193",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte",
+    "grau_ensino": "Ensino Médio Completo",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/JEFFERSON.JPEG"
+  },
+  {
+    "nome": "CHRISTIAN MUNIZ DE ALMEIDA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9100-9259",
+    "equipe": "EPF-IN-41B",
+    "endereco": "Rua 13 de Agosto, Nº 24",
+    "bairro": "Buriti dos Esmeros",
+    "cidade": "Pacajus",
+    "grau_ensino": "Ensino Médio Completo, Cursando Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/CHRISTIANMUNIZ.JPEG"
+  },
+  {
+    "nome": "FERNANDO ANTONIO BEZERRA PEREIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9150-1142",
+    "equipe": "EPF-IN-41B",
+    "endereco": "Av. Prof. José Arthur de Carvalho, 2464",
+    "bairro": "Lagoa Redonda",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Médio Incompleto",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/ANTONIOLUCIANO.JPEG"
+  },
+  {
+    "nome": "CAIO BARBOZA DE OLIVEIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9144-2320",
+    "equipe": "EPF-IN-42B",
+    "endereco": "Rua Barra Mansa, 377, AP102",
+    "bairro": "Granja Lisboa",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Ensino Médio Completo",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/default.JPEG"
+  },
+  {
+    "nome": "GEOVANE SEVERIANO ROQUE",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9154-4984",
+    "equipe": "EPF-IN-42B",
+    "endereco": "Rua Central, Loteamento Parque Messejana, N: 100, Ap 403, Bloco 01",
+    "bairro": "Messejana",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Ensino Médio Completo, Técnico em Eletrotécnica",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/default.JPEG"
+  },
+  {
+    "nome": "MARILSON GOIS DA SILVA FILHO",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9114-8127",
+    "equipe": "EPF-IN-47B",
+    "endereco": "Rua João José, Nº 60A",
+    "bairro": "Guagiru",
+    "cidade": "Caucaia",
+    "grau_ensino": "Ensino Médio Completo, Cursando Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/MARILSONGOIS.JPEG"
+  },
+  {
+    "nome": "RAFAEL BATISTA LEITE",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9141-1180",
+    "equipe": "EPF-IN-47B",
+    "endereco": "Rua São Caetano, 116",
+    "bairro": "Barra do Ceará",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Ensino Médio Completo, Cursando Técnico em Eletrotécnica",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/RAFAELBATISTA.JPEG"
+  },
+  {
+    "nome": "DAVID DOS REIS OLIVEIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9125-8556",
+    "equipe": "EPF-IN-48B",
+    "endereco": "Rua Luiz Gonzaga dos Santos, 135, BL-H, AP-106",
+    "bairro": "Pajuçara",
+    "cidade": "Maracanaú",
+    "grau_ensino": "Ensino Médio Completo",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/DAVID NUNES.JPEG"
+  },
+  {
+    "nome": "FRANCISCA JAQUELINE DOS SANTOS MOREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9159-4576",
+    "equipe": "EPF-IN-48B",
+    "endereco": "Rua Coronel Nunes de Melo, 767",
+    "bairro": "Rodolfo Teófilo",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Superior Completo, Cursando Técnico em Eletrotécnica",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/JAQUELINE.JPEG"
+  },
+  {
+    "nome": "EDNARDO FERREIRA BARBOSA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9142-3175",
+    "equipe": "EPF-IN-52B",
+    "endereco": "Av. Canavieira dos Pinheiros, N° 23",
+    "bairro": "Aningas",
+    "cidade": "Horizonte",
+    "grau_ensino": "Ensino Médio Completo, Cursando Tecnólogo de Energias Renováveis",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/EDNARDO.JPEG"
+  },
+  {
+    "nome": "FRANCISCO HENRIQUE MIRANDA VIEIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9203-3819",
+    "equipe": "EPF-IN-52B",
+    "endereco": "Rua luminosa 817",
+    "bairro": "Granja Portugal",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Tecnico em eletrotecnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/FRANCISCOCORDEIRO-GLEIDISON.JPEG"
+  },
+  {
+    "nome": "CARLOS CLAYTON DE LIMA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9105-2803",
+    "equipe": "EPF-IN-55B",
+    "endereco": "Rua Osvaldo Freitas Nunes, 200",
+    "bairro": "Pedra Branca",
+    "cidade": "Pacajus",
+    "grau_ensino": "Médio Completo, Terminando Eletrotécnico",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/BRENO LIMA FERRER.JPEG"
+  },
+  {
+    "nome": "PEDRO HENRIQUE MARTINS DA SILVA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "85 9164-6685",
+    "equipe": "EPF-IN-55B",
+    "endereco": "Rua Raimundo Nonato da Silva, Nº 406",
+    "bairro": "Canidezinho",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Ensino Médio Completo, Cursando Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/HENRIQUE-FLAVIO.JPEG"
+  },
+  {
+    "nome": "RENAN GOMES DE FRANÇA",
+    "cargo": "Eletricista Sênior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "Sem número",
+    "equipe": "Equipe",
+    "endereco": "Rua Pierre Luz, 471",
+    "bairro": "Jardim Guanabara",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Ensino Médio Completo, Cursando Técnico em Eletrotécnica",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/FELIPEGOMES-NONDAS.JPEG"
+  },
+  {
+    "nome": "SAULO ANDRE DE SOUZA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Antônio Flávio Juvêncio de Souza",
+    "telefone": "Sem número",
+    "equipe": "Equipe",
+    "endereco": "Rua Paulo Esteferson Bezerra 154, Loteamento Santa Terezinha",
+    "bairro": "Jangurussu",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Eletrotécnico Completo",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/SAULO.JPEG"
+  },
+  {
+    "nome": "FRANCISCO JORGE ROCHA JUNIOR",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9131-5355",
+    "equipe": "EPF-IN-02B",
+    "endereco": "Rua G Casa 18, Loteamento Metrópole Sul",
+    "bairro": "Arianópolis",
+    "cidade": "Caucaia",
+    "grau_ensino": "Ensino Médio Completo, Técnico em Eletrotécnica Cursando",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/FRANCISCOCORDEIRO-GLEIDISON.JPEG"
+  },
+  {
+    "nome": "BRENO DE LIMA FERRER",
+    "cargo": "Eletricista Sênior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9149-5173",
+    "equipe": "EPF-IN-03B",
+    "endereco": "Rua José Pedra, 1460B",
+    "bairro": "Parque 2 Irmãos",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Técnico em Eletrotécnica, Cursando Ensino Superior em Engenharia Elétrica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/BRENO LIMA FERRER.JPEG"
+  },
+  {
+    "nome": "LUCAS MOURA ALVES",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9115-7149",
+    "equipe": "EPF-IN-03B",
+    "endereco": "Rua Vera Cruz, 89",
+    "bairro": "Carlito Pomplona",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/LUCAS - AYRTON.JPEG"
+  },
+  {
+    "nome": "JONAS CLEITON MARTINS DE OLIVEIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-7715",
+    "equipe": "EPF-IN-10B",
+    "endereco": "Demostenes de Carvalho 551",
+    "bairro": "Bairro Ellery",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/JONAS.JPEG"
+  },
+  {
+    "nome": "RICARDO DE SOUSA SANTOS",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9158-9186",
+    "equipe": "EPF-IN-10B",
+    "endereco": "Rua da Amizade, Casa 111",
+    "bairro": "Jardim das Oliveiras",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Ensino Médio Completo, Técnico em Eletrotécnica (Trancado)",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/RICARDO - AYRTON.JPEG"
+  },
+  {
+    "nome": "ADONIAS DO NASCIMENTO LAUREANO",
+    "cargo": "Eletricista Sênior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9162-2979",
+    "equipe": "EPF-IN-15B",
+    "endereco": "Rua Jackson do pandeiro 416",
+    "bairro": "Barra do Ceara",
+    "cidade": "Fortaleza - CE",
+    "grau_ensino": "Tecnico em eletrotecnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/default.JPEG"
+  },
+  {
+    "nome": "PEDRO SAMUEL SOARES LOPES",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9191-7737",
+    "equipe": "EPF-IN-15B",
+    "endereco": "Rua Dom Maurício, 405",
+    "bairro": "Presidente Kennedy",
+    "cidade": "Fortaleza",
+    "grau_ensino": "Técnico em Redes de Computadores e Técnico em Telecomunicações",
+    "formacao": "Eletrcista de Redes BT/MT",
+    "imagem": "images/PEDRO.JPEG"
+  },
+  {
+    "nome": "JOAO FELIPE FERNANDES DOS SANTOS",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9153-3182",
+    "equipe": "EPF-IN-18B",
+    "endereco": "Rua João do Nascimento, 94",
+    "bairro": "Centro",
+    "cidade": "Horizonte",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/JOÃO FELIPE - AYRTON.JPEG"
+  },
+  {
+    "nome": "YALE ACIOLI OLIVEIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9165-7789",
+    "equipe": "EPF-IN-18B",
+    "endereco": "Rua Um D, 158",
+    "bairro": "Parque Tabapuá",
+    "cidade": "Caucaia - CE",
+    "grau_ensino": "Ensino Médio Completo, Técnico em Eletrotécnica Concluído (CRT)",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/YALE.JPEG"
+  },
+  {
+    "nome": "FRANCISCO VANDESON DE SOUSA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9134-9750",
+    "equipe": "EPF-IN-19B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/FRANCISCOCORDEIRO-GLEIDISON.JPEG"
+  },
+  {
+    "nome": "JOSE MATHEUS PINHEIRO",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9154-3532",
+    "equipe": "EPF-IN-19B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/MATHEUSPATRICIO-GLEIDISON.JPEG"
+  },
+  {
+    "nome": "JOAO HELENO ALVES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-22B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/João Heleno.JPEG"
+  },
+  {
+    "nome": "VANDERSON DINIZ ALVES",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-22B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/VANDERSONDINIZ.JPEG"
+  },
+  {
+    "nome": "BRUNO SALOMÃO GOMES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-23B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/BRUNOSALOMÃO.JPEG"
+  },
+  {
+    "nome": "VANDERSON ALVES FERREIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-23B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/VANDERSON.JPEG"
+  },
+  {
+    "nome": "ISADORA ALVES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-24B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/ISADORA.JPEG"
+  },
+  {
+    "nome": "JONAS CLEITON MARTINS DE OLIVEIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-24B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/JONAS CLEITON - AYRTON.JPEG"
+  },
+  {
+    "nome": "DAVID NUNES ALVES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-25B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/DAVID NUNES.JPEG"
+  },
+  {
+    "nome": "FRANKLIN ALVES FERREIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-25B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/FRANKLIN.JPEG"
+  },
+  {
+    "nome": "ERINALDO ALVES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-26B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/ERINALDO.JPEG"
+  },
+  {
+    "nome": "ODERLAN ALVES FERREIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-26B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/ODERLAN.JPEG"
+  },
+  {
+    "nome": "PEDRO ALVES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-27B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/Pedro.JPEG"
+  },
+  {
+    "nome": "JOÃO FELIPE ALVES FERREIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-27B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/João Felipe.JPEG"
+  },
+  {
+    "nome": "ISRAEL ALVES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-28B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/Israel.JPEG"
+  },
+  {
+    "nome": "JEANINE ALVES FERREIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-28B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/Jeanine.JPEG"
+  },
+  {
+    "nome": "ALLAN KENNEDY ALVES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-29B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/ALLAN KENNEDY.JPEG"
+  },
+  {
+    "nome": "HELENO ALVES FERREIRA",
+    "cargo": "Eletricista Pleno",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-29B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/HELENO.JPEG"
+  },
+  {
+    "nome": "ADONIAS ALVES FERREIRA",
+    "cargo": "Eletricista Júnior",
+    "supervisor": "Ayrton Silva Ribeiro Rocha",
+    "telefone": "85 9151-3953",
+    "equipe": "EPF-IN-30B",
+    "endereco": "Rua Coronel Gadelha, 452",
+    "bairro": "Zumbi",
+    "cidade": "Horizonte - CE",
+    "grau_ensino": "Técnico em Eletrotécnica",
+    "formacao": "Técnico em Eletrotécnica",
+    "imagem": "images/aDONIAS.JPEG"
+  }
+];
 
         // Função para renderizar o organograma
         function renderOrganograma(colaboradoresParaExibir) {
@@ -545,7 +1216,32 @@
                     modal.style.display = 'none';
                 }
             });
+            
+            // Iniciar o carregamento dos dados
+            renderOrganograma(colaboradores);
+            setupSearch();
         });
+
+        /*
+        * GUIA DE EDIÇÃO:
+        * 
+        * Para adicionar um novo colaborador:
+        * 1. Copie um bloco existente do array 'colaboradores'
+        * 2. Cole-o dentro do array e modifique os dados conforme necessário
+        * 3. Certifique-se de que a imagem esteja na pasta 'images/'
+        * 4. Salve o arquivo e recarregue a página
+        * 
+        * Para remover um colaborador:
+        * 1. Localize o bloco do colaborador no array 'colaboradores'
+        * 2. Exclua todo o bloco (desde { até })
+        * 3. Certifique-se de manter a sintaxe correta (vírgulas entre os blocos)
+        * 4. Salve o arquivo e recarregue a página
+        * 
+        * Para editar um colaborador existente:
+        * 1. Localize o bloco do colaborador no array 'colaboradores'
+        * 2. Modifique os valores conforme necessário
+        * 3. Salve o arquivo e recarregue a página
+        */
     </script>
 </body>
 </html>
